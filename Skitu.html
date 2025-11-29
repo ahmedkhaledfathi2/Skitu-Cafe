@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#2E8B57">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Skitu Café">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=yes">
+    <title>Skitu Café – اطلب أونلاين</title>
+    <meta name="description" content="Skitu Café – قهوة طازجة، حلويات دافئة، وأجواء مريحة في الإسماعيلية. اطلب أونلاين الآن!">
+    <meta property="og:title" content="Skitu Café – اطلب أونلاين">
+    <meta property="og:description" content="قهوة طازجة، وافل دافئ، وكعك شوكولاتة... كل ده وأكتر من Skitu Café!">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:url" content="https://skitu-cafe.netlify.app">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Google Fonts - Tajawal -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="Skitu.css">
+
+</head>
+    <body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-progress" id="scroll-progress"></div>
+    </div>
+
+    <!-- Animated Background Particles -->
+    <div class="particles" id="particles"></div>
+
+    <header>
+        <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; gap: 1.8rem;">
+            <img 
+                src="https://i.ibb.co/CK81rTjY/516729223-18016378349737174-6697125444381549372-n.jpg" 
+                alt="Skitu Café Logo" 
+                style="width: 90px; height: 90px; border-radius: 50%; object-fit: contain; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+            <h1>Skitu Café</h1>
+        </div>
+        <p style="margin: 0; opacity: 0.95; font-size: 1.1rem; color: rgba(255,255,255,0.95); font-weight: 500;">
+            ابدأ يومك صح... ابدأ مع Skitu
+        </p>
+    </header>
+    <nav>
+        <a href="#about">من نحن</a>
+        <a href="#menu">المنيو</a>
+        <a href="#contact">اتصل بنا</a>
+    </nav>
+    
+    <!-- Shopping Cart -->
+    <div class="cart-container" onclick="toggleCart()">
+        <i class="fas fa-shopping-cart"></i>
+        <span>سلة (<span id="cart-count">0</span>)</span>
+    </div>
+
+    <div class="container">
+        <div class="hero">
+            <div class="floating-beans" id="floating-beans"></div>
+            <h2>مرحباً بك في Skitu Café</h2>
+            <p>استرخِ. انعش نفسك. جدّد طاقتك.<br>
+            وجهتك المحلية للقهوة الفاخرة، الحلويات اللذيذة، والأجواء الدافئة.</p>
+        </div>
+        
+        <section class="about" id="about">
+            <h2 class="section-title">من نحن</h2>
+            <p>في Skitu Café، نتخصص في المشروبات الفاخرة والحلويات الشهية. حبوب القهوة لدينا مختارة بعناية من أجود المحمصات، ومشروباتنا المميزة تُحضّر بحب. من الإسبريسو الكلاسيكي إلى العصائر المنعشة، ومن الوافل الدافئ إلى كعكة الشوكولاتة الذائبة، نقدّم لك تجربة "ابدأ يومك صح" المثالية. سواء كنت تبحث عن مكان هادئ للقراءة أو مكان للقاء الأصدقاء، نتمنى أن تشعر وكأنك في بيتك في مساحتنا الدافئة والمرحّبة.</p>
+        </section>
+        
+        <section class="opening-hours">
+            <h2 class="section-title">ساعات العمل</h2>
+            <div class="hours-grid">
+                <div class="hours-item">
+                    <span class="day">السبت - الخميس</span>
+                    <span class="time">8:00 ص - 2:00 ص</span>
+                </div>
+                <div class="hours-item">
+                    <span class="day">الجمعة</span>
+                    <span class="time">2:00 م - 2:00 ص</span>
+                </div>
+            </div>
+        </section>
+        
+        <section id="menu">
+            <h2 class="section-title">المنيو</h2>
+            
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="menu-search" placeholder="ابحث في المنيو..." onkeyup="searchMenu()">
+                <button onclick="clearSearch()" class="clear-search-btn">مسح</button>
+            </div>
+            
+            <div class="menu" id="menu-container">
+                <!-- سيتم ملؤه تلقائيًا -->
+            </div>
+        </section>
+        
+        <section class="special-offers">
+            <h2 class="section-title">عروض خاصة</h2>
+            <div class="offers-grid">
+                <div class="offer-item">
+                    <div class="offer-badge">🔥 ساخن</div>
+                    <h3>اشترِ 2 واحصل على 1 مجانًا</h3>
+                    <p>احصل على أي 3 مشروبات وادفع لاثنين فقط!</p>
+                    <span class="offer-code">الكود: SKITU3</span>
+                </div>
+                <div class="offer-item">
+                    <div class="offer-badge">⭐ جديد</div>
+                    <h3>عرض عطلة نهاية الأسبوع</h3>
+                    <p>خصم 20% على جميع الحلويات كل جمعة!</p>
+                    <span class="offer-code">الكود: WEEKEND20</span>
+                </div>
+                <div class="offer-item">
+                    <div class="offer-badge">💝 طلاب</div>
+                    <h3>خصم للطلاب</h3>
+                    <p>خصم 15% للطلاب ببطاقة جامعية</p>
+                    <span class="offer-code">الكود: STUDENT15</span>
+                </div>
+            </div>
+        </section>
+        
+        <section class="popular-items">
+            <h2 class="section-title">الأكثر طلباً</h2>
+            <div class="popular-grid">
+                <div class="popular-item">
+                    <span class="popular-rank">#1</span>
+                    <h3>موكا</h3>
+                    <p>مزيج مثالي من القهوة والشوكولاتة</p>
+                </div>
+                <div class="popular-item">
+                    <span class="popular-rank">#2</span>
+                    <h3>وافل</h3>
+                    <p>وافل ذهبي مقرمش مع شراب</p>
+                </div>
+                <div class="popular-item">
+                    <span class="popular-rank">#3</span>
+                    <h3>فرابيه</h3>
+                    <p>قهوة مثلجة مخلوطة مع كريمة</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="reviews">
+            <h2 class="section-title">آراء عملائنا</h2>
+            <div class="reviews-grid">
+                <div class="review-item">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"قهوة وحلويات رائعة! الجو مثالي للمذاكرة."</p>
+                    <span class="reviewer">- أحمد م.</span>
+                </div>
+                <div class="review-item">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"أفضل فرايب في المدينة! أنصح بكعكة الشوكولاتة."</p>
+                    <span class="reviewer">- سارة ك.</span>
+                </div>
+                <div class="review-item">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"خدمة رائعة وسموذي طبيعي. هأكيد أكرر الزيارة!"</p>
+                    <span class="reviewer">- عمر ح.</span>
+                </div>
+            </div>
+        </section>
+        
+        <section class="contact" id="contact">
+            <h2 class="section-title">اتصل بنا</h2>
+            <div class="contact-info">
+                <strong>العنوان:</strong> التل الكبير، الإسماعيلية<br>
+                <strong>الهاتف:</strong> 01143737923<br>
+                <strong>البريد الإلكتروني:</strong> skitucafe@gmail.com<br>
+                <strong>إنستجرام:</strong> <a href="https://www.instagram.com/skitu.eg" target="_blank">@skitu.eg</a><br>
+                <strong>فيسبوك:</strong> <a href="https://facebook.com/skitu.eg" target="_blank">Skitu Café</a>
+            </div>
+            
+            <!-- Google Maps Embed -->
+            <div style="margin: 2rem 0;">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d397.13563104683254!2d31.782871561634355!3d30.55874191889109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f81996533c4f09%3A0xbb5d0616642f2c1f!2z2LXZitiv2YTZitipINivLyDYqNiz2YXYqSDYudio2K_Yp9mE2LHYp9iy2YI!5e0!3m2!1sar!2seg!4v1761530204734!5m2!1sar!2seg" 
+                    width="100%" 
+                    height="250" 
+                    style="border:0; border-radius:10px;" 
+                    allowfullscreen 
+                    loading="lazy">
+                </iframe>
+            </div>
+
+        </section>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-content">
+            <h3>طلبك</h3>
+            <div id="cart-items"></div>
+            <div class="cart-total" id="cart-total">الإجمالي: 0 ج.م</div>
+            
+            <div class="customer-form" id="customer-form" style="display: none;">
+                <h4>بيانات العميل</h4>
+                <div class="form-group">
+                    <label for="customer-name">الاسم الكامل:</label>
+                    <input type="text" id="customer-name" placeholder="اسمك الكامل" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer-phone">رقم الهاتف:</label>
+                    <input type="tel" id="customer-phone" placeholder="01xxxxxxxxx" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer-address">العنوان:</label>
+                    <textarea id="customer-address" placeholder="عنوانك بالكامل" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="order-notes">ملاحظات الطلب (اختياري):</label>
+                    <textarea id="order-notes" placeholder="أي تعليمات خاصة..."></textarea>
+                </div>
+            </div>
+            
+            <button class="checkout-btn" onclick="proceedToCheckout()" id="proceed-btn">📝 المتابعة</button>
+            <button class="checkout-btn" onclick="checkout()" id="whatsapp-btn" style="display: none;">📱 إرسال عبر الواتساب</button>
+            <button class="add-to-cart-btn" onclick="clearCart()" style="background: #ff6b6b; margin-top: 10px;" id="clear-cart-btn">🗑️ مسح السلة</button>
+            <button class="add-to-cart-btn" onclick="toggleCart()" style="background: #666; margin-top: 10px;">إغلاق</button>
+        </div>
+    </div>
+
+    <!-- Options Modal -->
+    <div id="options-modal" class="cart-modal" style="display: none;">
+        <div class="cart-content" style="max-width: 450px;">
+            <h3 id="modal-title">اختر النوع</h3>
+            <div id="options-list"></div>
+            <button class="add-to-cart-btn" onclick="closeOptionsModal()" style="background: #666; margin-top: 15px;">
+                إغلاق
+            </button>
+        </div>
+    </div>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/201143737923" class="whatsapp-float" target="_blank" title="اتصل بنا على الواتساب">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Skitu Café</h4>
+                <p>ابدأ يومك صح... ابدأ مع Skitu</p>
+            </div>
+            <div class="footer-section">
+                <h4>تابعنا</h4>
+                <p>ابقَ على تواصل معنا عبر السوشيال ميديا</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/skitu.eg" target="_blank" title="إنستجرام"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1Gu2V2JaKR/" target="_blank" title="فيسبوك"><i class="fab fa-facebook"></i></a>
+                    <a href="https://wa.me/201143737923" target="_blank" title="واتساب"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.tiktok.com/@skitueg22?_t=ZS-90t4eI1yUhs&_r=1" target="_blank" title="تيك توك"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>روابط سريعة</h4>
+                <a href="#menu">المنيو</a>
+                <a href="#about">من نحن</a>
+                <a href="#contact">اتصل بنا</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Skitu Café. جميع الحقوق محفوظة.
+        </div>
+    </footer>
+
+    <script src="Skitu.js"></script>
+</body>
+</html>
