@@ -119,7 +119,12 @@
         }
 
         header img {
-            animation: logoFloat 3s ease-in-out infinite, fadeInDown 1s ease;
+            animation: fadeInDown 1s ease;
+            transition: transform 0.3s ease;
+        }
+
+        header img:hover {
+            transform: scale(1.05);
         }
 
         @keyframes logoFloat {
@@ -133,9 +138,14 @@
 
         header h1 {
             margin: 0;
-            animation: pulse 2s infinite, fadeInDown 1s ease;
+            animation: fadeInDown 1s ease;
             position: relative;
             z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        header h1:hover {
+            transform: scale(1.02);
         }
 
         @keyframes pulse {
@@ -344,7 +354,7 @@
 
         .menu {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
             gap: 2rem;
             margin-top: 1.5rem;
         }
@@ -368,7 +378,7 @@
         }
 
         .menu-item-content {
-            padding: 1.5rem;
+            padding: 2rem;
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -380,6 +390,12 @@
             font-size: 1.1rem;
             font-weight: 700;
             color: var(--primary);
+        }
+
+        .option-name {
+             font-weight: 600;
+             margin-bottom: 5px;
+             color: #ffffff;
         }
 
         .option-item {
@@ -643,21 +659,20 @@
 
         .menu-item img {
             width: 100%;
-            height: 200px;
+            height: 100%;
             object-fit: cover;
             border-radius: 12px;
             margin-bottom: 1rem;
             background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
-            transition: transform 0.4s ease;
-            animation: imageFloat 3s ease-in-out infinite;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
         }
 
         /* Specific image sizing for frappe and milkshake - removed to restore original */
 
         .menu-item:hover img {
-            transform: scale(1.05) translateY(-5px);
-            animation-play-state: paused;
+            transform: scale(1.2);
             box-shadow: 0 8px 25px rgba(46, 139, 87, 0.3);
         }
 
@@ -1512,6 +1527,8 @@
 
         /* Better Cart Modal on Mobile */
         @media (max-width: 768px) {
+
+            
             .cart-content h3 {
                 font-size: 1.3rem;
                 margin-bottom: 1rem;
@@ -1582,6 +1599,13 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+
+            .menu-item img {
+        height: auto !important;
+        aspect-ratio: 3 / 2 !important;
+        object-fit: cover !important;
+        object-position: center !important;
+    }
             /* Header */
             header {
                 padding: 1.5rem 0 0.5rem 0;
@@ -1635,7 +1659,7 @@
             }
 
             .menu-item img {
-                height: 180px;
+                height: 220px;
             }
 
             .menu-item-content {
@@ -1765,6 +1789,11 @@
         }
 
         @media (max-width: 480px) {
+
+            .menu-item img {
+        height: auto !important;
+        aspect-ratio: 3 / 2 !important;
+    }
             /* Extra Small Devices */
             header h1 {
                 font-size: 1.3rem;
@@ -1793,7 +1822,7 @@
             }
 
             .menu-item img {
-                height: 150px;
+                height: 200px;
             }
 
             .cart-container {
@@ -1879,3 +1908,127 @@
                 font-size: 16px !important;
             }
         }
+
+        /* === Dark Mode Styles === */
+:root {
+  --bg-light: #f4f1ee;
+  --bg-card: #ffffff;
+  --text-primary: #333333;
+  --text-secondary: #555555;
+  --nav-bg: var(--primary-dark);
+  --section-bg: #ffffff;
+}
+
+/* Dark Mode متغيرات */
+body.dark-mode {
+  --bg-light: #121212;
+  --bg-card: #1e1e1e;
+  --text-primary: #f0f0f0;
+  --text-secondary: #bbbbbb;
+  --nav-bg: #1a5e3a;
+  --section-bg: #1a1a1a;
+  color: var(--text-primary);
+  background-color: var(--bg-light);
+}
+
+/* تطبيق الوضع الداكن على العناصر */
+body.dark-mode header {
+  background: linear-gradient(135deg, var(--primary), #2a7a5a);
+}
+
+body.dark-mode nav {
+  background: var(--nav-bg);
+}
+
+body.dark-mode .about,
+body.dark-mode .contact,
+body.dark-mode .opening-hours,
+body.dark-mode .special-offers,
+body.dark-mode .popular-items,
+body.dark-mode .reviews {
+  background: var(--section-bg);
+  color: var(--text-primary);
+}
+
+body.dark-mode .menu-item {
+  background: var(--bg-card);
+  box-shadow: 0 4px 15px rgba(248, 245, 245, 0.3);
+}
+
+body.dark-mode .menu-item h3,
+body.dark-mode .menu-item p,
+body.dark-mode .section-title {
+  color: var(--text-primary);
+}
+
+body.dark-mode .cart-content,
+body.dark-mode .option-item,
+body.dark-mode .customer-form {
+  background: var(--bg-card);
+  color: var(--text-primary);
+}
+
+body.dark-mode .option-item:hover {
+  background: #2a2a2a;
+}
+
+body.dark-mode .hours-item,
+body.dark-mode .review-item,
+body.dark-mode .popular-item {
+  background: #252525;
+}
+
+body.dark-mode footer {
+  background: linear-gradient(135deg, #1a5e3a, #154d2f);
+}
+
+body.dark-mode .footer-section h4,
+body.dark-mode .footer-section p,
+body.dark-mode .footer-section a {
+  color: #e0e0e0;
+}
+
+/* زر التبديل */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: var(--primary);
+  color: white;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(46, 139, 87, 0.4);
+  z-index: 1000;
+  font-size: 18px;
+  transition: transform 0.2s, background 0.2s;
+}
+.theme-toggle:hover {
+  transform: scale(1.1);
+  background: var(--primary-dark);
+}
+body.dark-mode .option-item {
+    color: #ffffff !important; /* اسم الصنف أبيض */
+}
+/* ألوان الخيارات في الوضع الداكن */
+body.dark-mode .option-name {
+    color: #ffffff; /* أبيض */
+}
+body.dark-mode .option-price {
+    color: #a0e7a0; /* أخضر فاتح */
+}
+
+.option-name {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+.option-price {
+    color: var(--primary); /* أخضر */
+    font-weight: 700;
+    font-size: 1.1rem;
+}
