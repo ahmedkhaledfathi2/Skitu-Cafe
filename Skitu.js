@@ -21,7 +21,8 @@
           {
             id: 'frappe',
             name: 'فرابيه',
-            image: 'https://th.bing.com/th/id/OIP.VHtgSwwf4xvPLgZkS9cRQAHaLH?w=129&h=194&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3',
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRod0jdoHB2oaSI2ByZHxSa-Bq6Me4t22qyw&s',
+            
             description: 'مشروبات مخلوطة ومثلجة',
             options: [
               { name: 'فرابيه كافيه', price: 60 },
@@ -229,7 +230,7 @@
           const optionsHtml = item.options.map((opt, idx) => `
             <div class="option-item" onclick="selectOption(${idx})">
               <div>
-                <div style="font-weight: 600; margin-bottom: 5px; color: #333;">${opt.name}</div>
+                <div class="option-name">${opt.name}</div>
                 <div class="option-price">${opt.price} ج.م</div>
               </div>
               <button class="add-to-cart-btn" style="padding: 8px 16px; min-width: auto;" 
@@ -273,39 +274,39 @@
         }
         
         function updateCartDisplay() {
-            const cartCount = document.getElementById('cart-count');
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            cartCount.textContent = totalItems;
-            
-            const cartItems = document.getElementById('cart-items');
-            const cartTotal = document.getElementById('cart-total');
-            
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">سلة طلباتك فارغة</p>';
-                cartTotal.textContent = 'الإجمالي: 0 ج.م';
-            } else {
-                cartItems.innerHTML = cart.map((item, index) => `
-                    <div class="cart-item">
-                        <div class="cart-item-info">
-                            <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-price">${item.price} ج.م للوحدة</div>
-                        </div>
-                        <div class="cart-item-controls">
-                            <div class="quantity-controls">
-                                <button class="quantity-btn" onclick="decreaseQuantity(${index})">-</button>
-                                <span class="quantity-display">${item.quantity}</span>
-                                <button class="quantity-btn" onclick="increaseQuantity(${index})">+</button>
-                            </div>
-                            <button class="quantity-btn remove" onclick="removeItem(${index})" title="إزالة">×</button>
-                        </div>
-                        <div class="item-total">${item.price * item.quantity} ج.م</div>
+    const cartCount = document.getElementById('cart-count');
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCount.textContent = totalItems;
+    const cartItems = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+    
+    if (cart.length === 0) {
+        cartItems.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">سلة طلباتك فارغة</p>';
+        cartTotal.innerHTML = '<span style="color: #fff;">الإجمالي: 0 ج.م</span>';
+    } else {
+        cartItems.innerHTML = cart.map((item, index) => `
+    <div class="cart-item">
+        <div class="cart-item-info">
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-price">${item.price} ج.م للوحدة</div>
+        </div>
+        ...
+                <div class="cart-item-controls">
+                    <div class="quantity-controls">
+                        <button class="quantity-btn" onclick="decreaseQuantity(${index})">-</button>
+                        <span class="quantity-display">${item.quantity}</span>
+                        <button class="quantity-btn" onclick="increaseQuantity(${index})">+</button>
                     </div>
-                `).join('');
-                
-                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-                cartTotal.textContent = `الإجمالي: ${total} ج.م`;
-            }
-        }
+                    <button class="quantity-btn remove" onclick="removeItem(${index})" title="إزالة">×</button>
+                </div>
+                <div class="item-total" style="color: var(--primary); font-weight: bold;">${item.price * item.quantity} ج.م</div>
+            </div>
+        `).join('');
+        
+        const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        cartTotal.innerHTML = `<span style="color: #fff; font-weight: bold; font-size: 1.2rem;">الإجمالي: ${total} ج.م</span>`;
+    }
+}
         
         function toggleCart() {
             const modal = document.getElementById('cart-modal');
@@ -575,3 +576,27 @@ ${orderNotes ? `📝 *ملاحظات:* ${orderNotes}\n` : ''}⏰ *وقت الط�
             createFloatingBeans();
             initScrollAnimations();
         });
+
+        // === Dark Mode Toggle ===
+function toggleTheme() {
+  const body = document.body;
+  const icon = document.querySelector('.theme-toggle i');
+  body.classList.toggle('dark-mode');
+  
+  if (body.classList.contains('dark-mode')) {
+    icon.className = 'fas fa-sun';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    icon.className = 'fas fa-moon';
+    localStorage.setItem('theme', 'light');
+  }
+}
+
+// تطبيق الوضع المحفوظ عند فتح الصفحة
+document.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    document.querySelector('.theme-toggle i').className = 'fas fa-sun';
+  }
+});
