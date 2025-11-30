@@ -27,7 +27,7 @@
 
 </head>
     <body>
-    <!-- Scroll Progress Indicator -->
+   <!-- Scroll Progress Indicator -->
     <div class="scroll-indicator">
         <div class="scroll-progress" id="scroll-progress"></div>
     </div>
@@ -53,6 +53,10 @@
         <a href="#contact">اتصل بنا</a>
     </nav>
     
+    <div class="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-moon"></i>
+      </div>
+
     <!-- Shopping Cart -->
     <div class="cart-container" onclick="toggleCart()">
         <i class="fas fa-shopping-cart"></i>
@@ -129,18 +133,18 @@
             <div class="popular-grid">
                 <div class="popular-item">
                     <span class="popular-rank">#1</span>
+                    <h3>وافل</h3>
+                    <p>وافل ذهبي مقرمش مع قهوة</p>
+                </div>
+                <div class="popular-item">
+                    <span class="popular-rank">#2</span>
                     <h3>موكا</h3>
                     <p>مزيج مثالي من القهوة والشوكولاتة</p>
                 </div>
                 <div class="popular-item">
-                    <span class="popular-rank">#2</span>
-                    <h3>وافل</h3>
-                    <p>وافل ذهبي مقرمش مع شراب</p>
-                </div>
-                <div class="popular-item">
                     <span class="popular-rank">#3</span>
-                    <h3>فرابيه</h3>
-                    <p>قهوة مثلجة مخلوطة مع كريمة</p>
+                    <h3>ميلك شيك</h3>
+                    <p>مشروبات حليبية ومتنوعة النكهات</p>
                 </div>
             </div>
         </section>
@@ -155,12 +159,12 @@
                 </div>
                 <div class="review-item">
                     <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p>"أفضل فرايب في المدينة! أنصح بكعكة الشوكولاتة."</p>
+                    <p>"أفضل فرابيه في المدينة! أنصح ب وافل الشوكولاتة."</p>
                     <span class="reviewer">- سارة ك.</span>
                 </div>
                 <div class="review-item">
                     <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p>"خدمة رائعة وسموذي طبيعي. هأكيد أكرر الزيارة!"</p>
+                    <p>"خدمة رائعة وسموذي طبيعي. أكيد هكرر الزيارة!"</p>
                     <span class="reviewer">- عمر ح.</span>
                 </div>
             </div>
@@ -172,7 +176,7 @@
                 <strong>العنوان:</strong> التل الكبير، الإسماعيلية<br>
                 <strong>الهاتف:</strong> 01143737923<br>
                 <strong>البريد الإلكتروني:</strong> skitucafe@gmail.com<br>
-                <strong>إنستجرام:</strong> <a href="https://www.instagram.com/skitu.eg" target="_blank">@skitu.eg</a><br>
+                <strong>إنستجرام:</strong> <a href="https://www.instagram.com/skitu.eg" target="_blank">skitu.eg</a><br>
                 <strong>فيسبوك:</strong> <a href="https://facebook.com/skitu.eg" target="_blank">Skitu Café</a>
             </div>
             
@@ -194,8 +198,8 @@
     <!-- Cart Modal -->
     <div id="cart-modal" class="cart-modal">
         <div class="cart-content">
-            <h3>طلبك</h3>
-            <div id="cart-items"></div>
+            <h3 style="color: var(--primary);">طلبك</h3>
+                        <div id="cart-items"></div>
             <div class="cart-total" id="cart-total">الإجمالي: 0 ج.م</div>
             
             <div class="customer-form" id="customer-form" style="display: none;">
@@ -268,7 +272,6 @@
             &copy; 2025 Skitu Café. جميع الحقوق محفوظة.
         </div>
     </footer>
-
     <script src="Skitu.js"></script>
 </body>
 </html>
