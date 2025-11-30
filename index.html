@@ -145,7 +145,12 @@
         }
 
         header img {
-            animation: logoFloat 3s ease-in-out infinite, fadeInDown 1s ease;
+            animation: fadeInDown 1s ease;
+            transition: transform 0.3s ease;
+        }
+
+        header img:hover {
+            transform: scale(1.05);
         }
 
         @keyframes logoFloat {
@@ -159,9 +164,14 @@
 
         header h1 {
             margin: 0;
-            animation: pulse 2s infinite, fadeInDown 1s ease;
+            animation: fadeInDown 1s ease;
             position: relative;
             z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        header h1:hover {
+            transform: scale(1.02);
         }
 
         @keyframes pulse {
@@ -370,7 +380,7 @@
 
         .menu {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
             gap: 2rem;
             margin-top: 1.5rem;
         }
@@ -394,7 +404,7 @@
         }
 
         .menu-item-content {
-            padding: 1.5rem;
+            padding: 2rem;
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -669,21 +679,20 @@
 
         .menu-item img {
             width: 100%;
-            height: 200px;
+            height: 100%;
             object-fit: cover;
             border-radius: 12px;
             margin-bottom: 1rem;
             background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
-            transition: transform 0.4s ease;
-            animation: imageFloat 3s ease-in-out infinite;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
         }
 
         /* Specific image sizing for frappe and milkshake - removed to restore original */
 
         .menu-item:hover img {
-            transform: scale(1.05) translateY(-5px);
-            animation-play-state: paused;
+            transform: scale(1.2);
             box-shadow: 0 8px 25px rgba(46, 139, 87, 0.3);
         }
 
@@ -1661,7 +1670,7 @@
             }
 
             .menu-item img {
-                height: 180px;
+                height: 220px;
             }
 
             .menu-item-content {
@@ -1819,7 +1828,7 @@
             }
 
             .menu-item img {
-                height: 150px;
+                height: 200px;
             }
 
             .cart-container {
@@ -2053,7 +2062,7 @@
                 <strong>العنوان:</strong> التل الكبير، الإسماعيلية<br>
                 <strong>الهاتف:</strong> 01143737923<br>
                 <strong>البريد الإلكتروني:</strong> skitucafe@gmail.com<br>
-                <strong>إنستجرام:</strong> <a href="https://www.instagram.com/skitu.eg" target="_blank">@skitu.eg</a><br>
+                <strong>إنستجرام:</strong> <a href="https://www.instagram.com/skitu.eg" target="_blank">skitu.eg</a><br>
                 <strong>فيسبوك:</strong> <a href="https://facebook.com/skitu.eg" target="_blank">Skitu Café</a>
             </div>
             
